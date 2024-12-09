@@ -1,34 +1,27 @@
 import boto3
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('visitor_counter')
 
 def handler(event, context):
-    try:
-        response = table.BatchGetItem (
-            Key={
-                'id': 'visitor-count',
-                'count': 0
-            }
-        )
-        if 'Item' in response:
-            count = response['Item']['count'] + 1
-        else:
-            count = 1
+    # Retrieve the current id
+    response = table.get_item(
+        Key={'id': 1}
+    )
 
-        table.put_item(
-            Item={
-                'id': 'visitor-count',
-                'count': 0
-            }
-        )
+    # Verify if the 'count' key exists in the response before it's accessed
+    item = response.get("Item", {"count": 0})
+    count = item["count"]
 
-        return {
-            'statusCode': 200,
-            'body': str(count)
+    # Increment the visitor count
+    count += 1
+
+    # Update the visitor_counter table
+    table.put_item(
+        Item={
+            "id": 1,
+            "count": count
         }
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'body': str(e)
-        }
+    )
+
+    return count
