@@ -1,3 +1,4 @@
+# Zip up counter.py
 data "archive_file" "lambda_zip" {
   type        = "zip"
   source_file = "counter.py"
@@ -12,6 +13,7 @@ resource "aws_lambda_function" "crc_visitor_counter" {
   runtime       = "python3.9"
 }
 
+# Provision lambda role
 resource "aws_iam_role" "lambda_role" {
   name = "lambda-role"
 
@@ -32,6 +34,7 @@ resource "aws_iam_role" "lambda_role" {
   EOF
 }
 
+# Attach lambda policy
 resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
   role       = aws_iam_role.lambda_role.name
