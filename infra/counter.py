@@ -32,7 +32,11 @@ def handler(event, context):
     print(f"Updated count: {count}")
 
      # Return the JSON structure that the APIGW expects
+     # Including CORS to enforce secure data exchange
     return {
         "statusCode": 200,
-        "body": json.dumps({"count": count})
-    }
+        'headers': {
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*'
+        }
