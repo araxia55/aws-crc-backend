@@ -1,4 +1,4 @@
-import boto3
+import boto3, json
 
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('visitor_counter')
@@ -13,8 +13,12 @@ def handler(event, context):
     item = response.get("Item", {"count": 0})
     count = item["count"]
 
+    # Log the current count value
+    print(f"Current count: {count}")
+
     # Increment the visitor count
-    count += 1
+    count = float(count) + 1
+    count = int(count)
 
     # Update the visitor_counter table
     table.put_item(
@@ -24,4 +28,11 @@ def handler(event, context):
         }
     )
 
-    return count
+    # Log the updated count value
+    print(f"Updated count: {count}")
+
+     # Return the JSON structure that the APIGW expects
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"count": count})
+    }

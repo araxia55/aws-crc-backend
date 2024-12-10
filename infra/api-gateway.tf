@@ -44,8 +44,13 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
 # API Gateway
 resource "aws_api_gateway_rest_api" "visitor_counter" {
   name = "visitor-counter"
+  description = "API for visitor counter"
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
 }
 
+# API Gateway resource
 resource "aws_api_gateway_resource" "visitor_counter" {
   rest_api_id = aws_api_gateway_rest_api.visitor_counter.id
   parent_id   = aws_api_gateway_rest_api.visitor_counter.root_resource_id
@@ -80,23 +85,23 @@ resource "aws_lambda_permission" "api_gateway" {
   source_arn = "${aws_api_gateway_rest_api.visitor_counter.execution_arn}/*/GET/count"
 }
 
+# Create an API stage
+resource "aws_api_gateway_stage" "visitor_counter" {
+  deployment_id = aws_api_gateway_deployment.visitor_counter.id
+  rest_api_id   = aws_api_gateway_rest_api.visitor_counter.id
+  stage_name    = "crc-prod"
+}
 
 # Deploy the API Gateway
 resource "aws_api_gateway_deployment" "visitor_counter" {
   rest_api_id = aws_api_gateway_rest_api.visitor_counter.id
 
   triggers = {
-    redeployment = sha1(jsonencode(aws_api_gateway_integration.visitor_counter))
+    redeployment = sha256(jsonencode(aws_api_gateway_integration.visitor_counter))
   }
 
   lifecycle {
     create_before_destroy = true
   }
-}
-
-resource "aws_api_gateway_stage" "visitor_counter" {
-  deployment_id = aws_api_gateway_deployment.visitor_counter.id
-  rest_api_id   = aws_api_gateway_rest_api.visitor_counter.id
-  stage_name    = "crc-prod"
 }
 
