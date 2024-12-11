@@ -43,7 +43,7 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
 
 # API Gateway
 resource "aws_api_gateway_rest_api" "visitor_counter" {
-  name = "visitor-counter"
+  name        = "visitor-counter"
   description = "API for visitor counter"
   endpoint_configuration {
     types = ["REGIONAL"]
@@ -104,4 +104,3 @@ resource "aws_api_gateway_deployment" "visitor_counter" {
     create_before_destroy = true
   }
 }
-
