@@ -4,7 +4,7 @@ dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('visitor_counter')
 
 def handler(event, context):
-    # Retrieve the current id
+    # Retrieve the current visitor count id
     response = table.get_item(
         Key={'id': 1}
     )
@@ -16,6 +16,9 @@ def handler(event, context):
     # Log the current count value
     print(f"Current count: {count}")
 
+    # TODO: Create a helper function: 
+    # This function will check if a visitor's information already exists in the table
+    
     # Increment the visitor count
     count = float(count) + 1
     count = int(count)
@@ -37,7 +40,8 @@ def handler(event, context):
         "statusCode": 200,
         'headers': {
         'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Methods': '*'
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Origin': '*'
         },
         "body": json.dumps({"count": count})
     }
