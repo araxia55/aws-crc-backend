@@ -70,7 +70,7 @@ jobs:
     
           - name: Save Plan Output 💾
             id: save_plan_output
-            run: echo "::set-output name=plan::$(terraform show -no-color tfplan)"
+            run: echo "::set-output name=plan::$(terraform show -no-color tfplan-backend)"
     
           - name: Deploy to Production 🚀
             if: github.ref == 'refs/heads/main'
