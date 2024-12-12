@@ -67,11 +67,3 @@ jobs:
           - name: Terraform Apply ✅
             id: apply
             run: terraform apply -auto-approve tfplan-backend
-    
-          - name: Save Plan Output 💾
-            id: save_plan_output
-            run: echo "::set-output name=plan::$(terraform show -no-color tfplan-backend)"
-    
-          - name: Deploy to Production 🚀
-            if: github.ref == 'refs/heads/main'
-            run: echo 'Deploying
