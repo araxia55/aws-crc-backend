@@ -1,0 +1,27 @@
+# Terraform providers
+**/.terraform/*
+
+# Terraform state files
+**/*.tfstate
+**/*.tfstate.backup
+.terraform.lock.hcl
+
+# Terraform plan files
+terraform.tfplan
+
+# Terraform configuration files
+*.tfvars
+*.auto.tfvars
+*.tfvars.json
+
+# Terraform Lambda builds
+builds
+
+# Crash log files
+crash.log
+
+# AWS credentials file
+~/.aws/credentials
+
+# AWS config file
+~/.aws/config

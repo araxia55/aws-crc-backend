@@ -1,0 +1,94 @@
+---
+import experiences from "../collections/experiences.json";
+import skills from "../collections/skills.json";
+import AboutExperience from "../components/about-experience.astro";
+import AboutSkills from "../components/about-skills.astro";
+import Button from "../components/button.astro";
+import PageHeading from "../components/page-heading.astro";
+import Layout from "../layouts/main.astro";
+---
+
+<Layout title="About Me">
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="About Me"
+      description="Hello 👋 I'm Ray a Cloud Engineer from New Zealand. I'm passionate about building and enhancing new and existing solutions while learning new technology."
+    />
+
+    <img src="/assets/images/about.PNG" class="relative z-30 w-full my-10 rounded-xl" />
+
+    <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">Short Bio</h2>
+    <p
+      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+    >
+      I like to approach challenges with a "Figureoutable" mindset. 🧑🏻‍💻, front-end dabbler 🤷🏻‍♂️, Part-time Jiu-Jitsu Hobbyist 🥋. 
+    </p>
+
+    <h2
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+    >
+      Experience
+    </h2>
+    <div class="px-5 py-10">
+      {
+        experiences.map((experience) => {
+          return (
+            <div class="pb-10 border-l border-gray-200 last:border-l-0 dark:border-neutral-700">
+              <AboutExperience
+                dates={experience.dates}
+                role={experience.role}
+                company={experience.company}
+                description={experience.description}
+                logo={experience.logo}
+              />
+            </div>
+          )
+        })
+      }
+    </div>
+
+    <h2
+      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
+    >
+      Skills
+    </h2>
+    <div class="px-5 py-10">
+      {
+        skills.map((skill) => {
+          return (
+            <div class="pb-10 border-l border-gray-200 last:border-l-0 dark:border-neutral-700">
+              <AboutSkills
+                CloudPlatform={skill.CloudPlatform}
+                ProgrammingLanguage={skill.ProgrammingLanguage}
+                CICD={skill.CICD}
+                Infrastructure={skill.Infrastructure}
+                ContainersOrchestration={skill.ContainersOrchestration}
+                ObservabilityMonitoring={skill.ObservabilityMonitoring}
+                Databases={skill.Databases}
+                VCSIT={skill.VCSIT}
+              />
+            </div>
+          )
+        })
+      }
+    </div>
+
+  <div class="flex items-center justify-center w-full py-5">
+    <Button text="Checkout my full resume" link="/resume" />
+  </div>
+
+    <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Let's Connect</h2>
+    <p
+      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+    >
+    Stay in the loop!
+
+    Want to know what I'm working on next? for the latest updates! <a
+        href="https://x.com/dnumyar05"
+        target="_blank"
+        class="text-indigo-600 underline">follow me on twitter</a
+      > or <a href="mailto:raymund.herradura.nz@gmail.com" class="text-indigo-600 underline"
+        >shoot me an email</a
+      > and I'll get back to you the soonest.
+  </section>
+</Layout>

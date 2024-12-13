@@ -1,0 +1,12 @@
+[
+    {
+        "CloudPlatform": [ "AWS, ", "Digital Ocean"],
+        "ProgrammingLanguage": [ "Python, ", "PHP"],
+        "CICD": ["TeamCity, ", "Octopus Deploy, ", "Artifactory, ", "Codepipeline"],
+        "Infrastructure": ["Terraform, ", "Kotlin DSL"],
+        "ContainersOrchestration": ["Docker, ", "Kubernetes"],
+        "ObservabilityMonitoring": ["NewRelic, ", "PagerDuty"],
+        "Databases": ["MySQL, ", "Postgres, ", "Aurora"],
+        "VCSIT": ["Github, ", "GitLab, ", "Jira"]
+    }
+]

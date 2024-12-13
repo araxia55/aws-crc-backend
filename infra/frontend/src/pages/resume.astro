@@ -1,0 +1,262 @@
+---
+import { Icon } from 'astro-iconify';
+
+// Resume contents
+const employmentHistory = [
+    {
+      title: 'Career Break',
+      time: 'January 2024 - current',
+    },
+    {
+      title: 'Platform Engineer, Xero',
+      company: {
+        name: 'Xero',
+        description: 'Accounting SaaS software that helps SME and large businesses thrive.'
+      },
+      time: 'Auckland, NZ  Jun 2022 - July 2023',
+      description:
+        'I turned server provisioning and configuration management into a smooth ride, zipping up deployments and making maintenance a breeze. Plus, I cleared the path for our Software Engineers by tackling CI/CD pipelines, artefact repositories, and databases issues. I employ a security first mindset, and crafted a secure code review process to keep everything shipshape.',
+    },
+    {
+      title: 'Intermediate Data Engineer',
+      company: {
+        name: 'Idexx',
+        description: 'ezyVet powered by Idexx is a SaaS global veterinary software.'
+      },
+      time: 'Auckland,NZ Mar 2020 - Jun 2022',
+      description:
+        `I developed, modified, and implemented scripts for an ETL system ingesting data into Ezyvet's platform. 
+         This process utilised the technology stack of PHP, C#, Docker, GitLab, and AWS services like EC2, S3, ASG, EBS, Lambdas, Dynamo DB, and Aurora which optimised the client onboarding journey.`,
+    },
+    {
+      title: 'Data Engineer',
+      company: {
+        name: 'Dexibit',
+        description:
+          'A startup buit for Museum Analytics',
+      },
+      time: 'Auckland, NZ  Mar 2020 - Jun 2022',
+      description:
+        'I built a data pipeline dream team using Python, AWS services, and Airflow. This powerhouse combo transforms and supports APIs that gulp down financial data, making sure forecasting and financial reports are top-notch.',
+    },
+    {
+      title: 'Professional Development',
+      company: {
+        name: 'Manukau Institute of Technology',
+        description:
+          'Completed Level 7 Graduate Diploma in Data Analytics.',
+      },
+      time: 'Auckland, NZ  Feb 2018 - Jan 2019',
+    },
+    {
+      title: 'Security Operations Engineer',
+      company: {
+        name: 'Deutsche Bank',
+        description: 'A Global Investment Banking Firm.',
+      },
+      time: 'Singapore, Mar 2014 - Sep 2017',
+      description:
+        'Implemented security best practices for log management and analysis to harden system security, resulting in a 50% decrease in security incidents.',
+    },
+  ],
+  skills = {
+    'Cloud Platforms': [
+      { name: 'AWS', icon: 'logos:aws' },
+      { name: 'Digital Ocean', icon: 'logos:digital-ocean' },
+    ],
+    'Programming Languages': [
+      { name: 'Python', icon: 'logos:python' },
+      { name: 'PHP', icon: 'logos:php' },
+      { name: 'Bash', icon: 'logos:bash' },
+    ],
+    'CI/CD': [
+      { name: 'TeamCity', icon: 'logos:teamcity' },
+      { name: 'OcotopusDeploy', icon: 'logos:octopus-deploy' },
+      { name: 'Artifactory', icon: 'logos:jfrog' },
+      { name: 'Codepipeline', icon: 'logos:aws-codepipeline' },
+    ],
+    'Infrastructure': [
+      { name: 'Terraform', icon: 'logos:terraform' },
+      { name: 'Kotlin DSL', icon: 'logos:kotlin' },
+    ],
+    'Containers and Orchestration': [
+      { name: 'Docker', icon: 'logos:docker' },
+      { name: 'Kubernetes', icon: 'logos:kubernetes' },
+    ],
+    'Observability/Monitoring': [
+      { name: 'NewRelic', icon: 'logos:new-relic' },
+      { name: 'SumoLogic', icon: 'logos:prometheus' },
+      { name: 'PagerDuty', icon: 'logos:pagerduty' },
+   
+    ],
+    'Databases': [
+      { name: 'MySQL', icon: 'logos:mysql' },
+      { name: 'Postgres', icon: 'logos:postgresql' },
+      { name: 'Aurora', icon: 'logos:aws-aurora' },
+      { name: 'DynamoDB', icon: 'logos:aws-dynamodb' },
+    ],
+    'Version Control & Issue Tracking': [
+      { name: 'Github', icon: 'logos:github' },
+      { name: 'GitLab', icon: 'logos:gitlab' },
+      { name: 'Jira', icon: 'logos:jira' },
+    ],
+  },
+  educationQualification = [
+    {
+      name: 'Graduate Diploma in Data Analytics, Manukau Institute of Technology',
+      description: 'Auckland, NZ Feb 2018 - Mar 2019',
+      link: " ",
+    },
+    {
+      name: 'BS in Information Technology, Mapua Institute of Technology',
+      description: 'Philippines, Manila 2001 - 2006',
+      link: " ",
+    },
+    {
+      name: 'AWS Certified Developer Associate (DVA-C02)',
+      awsCertLink: 'https://cp.certmetrics.com/amazon/en/public/verify/credential/3KHE1R9BKNB11VK7',
+      description: 'Cert reset incoming!',
+    },
+    {
+      name: 'HashiCorp Certified: Terraform Associate (HCTA0-002)',
+      hashicorp: 'https://www.credly.com/badges/39f8beeb-9277-4a10-80c3-f108fac2e78b',
+      description: 'Up for a renewal!',
+    },
+  ];
+
+---
+<body class="grid min-h-min place-items-center">
+<main
+  class="relative m-4 h-[360mm] w-[235mm] overflow-visible rounded-md bg-white px-8 py-4 shadow-lg print:m-0 print:h-screen print:w-screen print:rounded-none print:shadow-none"
+>
+
+<!-- Technical Skills -->
+  <section
+    class="mb-4 flex items-stretch border-b border-black p-4"
+  >
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-1 flex-col justify-center gap-1">
+        <h1 class="text-2xl font-bold">Raymund Herradura</h1>
+        <h2 class="text-lg">Cloud Engineer</h2>
+      </div>
+      <div class="flex gap-4">
+        <a
+          href="https://www.linkedin.com/in/raymundherradura/"
+          class="flex items-center gap-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon pack="mdi" name="linkedin" class="h-5 w-5" /> in/raymundherradura
+        </a>
+        <a
+          href="https://github.com/araxia55"
+          class="flex items-center gap-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon pack="mdi" name="github" class="h-5 w-5" /> github.com/araxia55
+        </a>
+        <a href="mailto:raymund.herradura.nz@gmail.com" class="flex items-center gap-1">
+          <Icon pack="mdi" name="email" class="h-5 w-5" /> raymund.herradura.nz@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="space-y-2 p-4">
+    <h2 class="text-xl font-bold">Technical Skills</h2>
+    {
+      Object.entries(skills).map(([category, list]) => (
+        <p class="flex flex-wrap gap-2 indent-2">
+          <span class="font-bold">{category}:</span>
+          {list.map(({ name, icon }, i) => (
+            <span class="flex items-center gap-1 indent-0">
+              {icon && <Icon name={icon} class="h-4 w-4" />}
+              {`${name}${i === list.length - 1 ? '.' : ','}`}
+            </span>
+          ))}
+        </p>
+      ))
+    }
+  
+<!-- Work Experience -->
+  </section>
+  <section class="space-y-2 p-4">
+    <h2 class="text-xl font-bold">Work Experience</h2>
+    {
+      employmentHistory.map(job => (
+        <div>
+          <p class="my-px mt-4 flex justify-between font-bold">
+            <span class="w-fit rounded-md bg-gray-300 px-1">{job.title}</span>
+            <span>{job.time}</span>
+          </p>
+          {job.company && (
+            <p class="flex gap-1">
+              <b>Company: {job.company.name}</b> 
+              <span class="text-neutral-700">// {job.company.description}</span>
+            </p>
+          )}
+          <p class="italic">{job.description}</p>
+        </div>
+      ))
+    }
+  </section>
+
+<!-- Education & Certifications Section -->
+  <section class="space-y-2 p-4">
+    <h2 class="text-xl font-bold">Education & Certifications</h2>
+    {
+      educationQualification.map(({ description, awsCertLink, link, name, hashicorp }) => (
+        <p class="flex gap-1">
+          <span class="font-bold">{name}</span>
+          <span class="flex">
+            {
+            (link) ?
+              <span class="mr-1">
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  
+                </a> 
+              </span>
+            :
+            awsCertLink ? (
+              <span class="mr-1">
+                <a
+                  class="underline"
+                  href={awsCertLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Credly
+                </a> 
+              </span>
+            ) : 
+            <a
+              class="underline"
+              href={hashicorp}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hashicorp
+            </a>
+            } -
+          </span>
+          <span class="italic">{description}</span>
+        </p>
+      ))
+    }
+    <br />
+  </section>
+</main>
+</body>
+
+<!-- Download CV Section -->
+<div class="flex gap-4 p-4 text-lg print:hidden" style="hidden: flex; justify-content: center">
+  <button onclick="window.print()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Print / Download as PDF
+  </button>
+</div>
+</body>
+
