@@ -1,5 +1,7 @@
 ## AWS ☁️ Cloud Resume Challenge 🚀
 
+![Ray's Portfolio Website](./assets/aws_crc_architecture_diagram.png)
+
 This is inspired by the [Cloud Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/aws/).
 
 #### Backend Section
