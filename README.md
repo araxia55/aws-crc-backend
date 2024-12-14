@@ -11,5 +11,6 @@ These are the Technology stack utlised to build the backend of this website:
 - AWS Dynamo DB
 - AWS API Gateway
 - AWS IAM Identity Center and Organizations
+- Python
 - Terraform
 - Github Actions 
