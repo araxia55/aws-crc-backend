@@ -92,6 +92,18 @@ resource "aws_api_gateway_stage" "visitor_counter" {
   stage_name    = "crc-prod"
 }
 
+# Security Mod: Wall of Fire
+# Limit the API requests to 5 requests at once and 10 requests/sec but must wait atleast 1 sec to send another one
+resource "aws_api_gateway_method_settings" "visitor_counter_settings" {
+  rest_api_id = aws_api_gateway_rest_api.visitor_counter.id
+  stage_name  = aws_api_gateway_stage.visitor_counter.stage_name
+  method_path = "ANY/*"
+  settings {
+    throttling_rate_limit  = 10
+    throttling_burst_limit = 6
+  }
+}
+
 # Deploy the API Gateway
 resource "aws_api_gateway_deployment" "visitor_counter" {
   rest_api_id = aws_api_gateway_rest_api.visitor_counter.id
