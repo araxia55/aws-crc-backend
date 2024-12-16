@@ -97,7 +97,7 @@ resource "aws_api_gateway_stage" "visitor_counter" {
 resource "aws_api_gateway_method_settings" "visitor_counter_settings" {
   rest_api_id = aws_api_gateway_rest_api.visitor_counter.id
   stage_name  = aws_api_gateway_stage.visitor_counter.stage_name
-  method_path = "*/*"
+  method_path = "ANY/*"
   settings {
     throttling_rate_limit  = 10
     throttling_burst_limit = 5
