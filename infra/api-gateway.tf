@@ -100,7 +100,7 @@ resource "aws_api_gateway_method_settings" "visitor_counter_settings" {
   method_path = "ANY/*"
   settings {
     throttling_rate_limit  = 10
-    throttling_burst_limit = 6
+    throttling_burst_limit = 5
   }
 }
 
